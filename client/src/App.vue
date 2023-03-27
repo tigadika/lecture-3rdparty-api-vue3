@@ -9,41 +9,10 @@ export default {
     }
   },
   created() {
-    this.fetchData()
+
   },
   methods: {
-    async fetchData() {
-      try {
-        const { data } = await axios({
-          method: 'get',
-          url: 'https://dummyjson.com/products'
-        })
 
-        console.log(data);
-        this.products = data.products
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    addToCart(product) {
-      this.cart.push(product)
-    },
-    async getInvoice() {
-      try {
-        const { data } = await axios({
-          method: 'post',
-          url: 'http://localhost:3000/invoice',
-          data: {
-            email: 'amardika.noor@gmail.com',
-            total: this.total * 15000,
-          }
-        })
-        console.log(data.data);
-        window.open(data.data.invoice_url, "_blank")
-      } catch (error) {
-        console.log(error);
-      }
-    }
   },
   computed: {
     countTotal() {
@@ -63,11 +32,11 @@ export default {
 
       <!-- checkout button -->
       <div class="inline-flex relative w-fit">
-        <div v-if="cart.length > 0"
+        <div
           class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-indigo-700 text-white rounded-full z-10">
-          ${{ countTotal }}
+          $ini total
         </div>
-        <button @click="getInvoice"
+        <button
           class="px-3 py-2 leading-tight bg-white text-gray-500 border rounded-lg border-gray-300 hover:bg-gray-100 hover:text-gray-700">
           Checkout
         </button>
@@ -78,15 +47,15 @@ export default {
     <div class="grid grid-cols-5 gap-4">
 
       <!-- card -->
-      <div v-for="product in products" :key="product.id" @click="addToCart(product)"
-        class="border rounded-xl shadow flex flex-col h-[400px] hover:cursor-pointer hover:shadow-xl">
-        <img class="object-cover w-full h-[150px] rounded-t-xl" :src="product.thumbnail" alt="">
+      <div class="border rounded-xl shadow flex flex-col h-[400px] hover:cursor-pointer hover:shadow-xl">
+        <img class="object-cover w-full h-[200px] rounded-t-xl"
+          src="https://thumb.viva.co.id/media/frontend/thumbs3/2022/07/22/62da7d9d10afc-itzy_1265_711.jpeg" alt="">
         <div class="p-2">
-          <div class="flex flex-row justify-between mb-5">
-            <p class="text-xl self-center">{{ product.title }}</p>
-            <p class="bg-emerald-100 rounded-full p-2">{{ product.price }}</p>
+          <div class="flex flex-row justify-between">
+            <p class="text-xl self-center">Title</p>
+            <p class="bg-emerald-100 rounded-full p-2">Rp. Price</p>
           </div>
-          <p class="text-base">{{ product.description }}</p>
+          <p class="text-base">Desc</p>
         </div>
       </div>
       <!-- end of card -->
