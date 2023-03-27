@@ -1,0 +1,13 @@
+<!-- card -->
+      <div class="border rounded-xl shadow flex flex-col h-[400px] hover:cursor-pointer hover:shadow-xl">
+        <img class="object-cover w-full h-[200px] rounded-t-xl"
+          src="https://thumb.viva.co.id/media/frontend/thumbs3/2022/07/22/62da7d9d10afc-itzy_1265_711.jpeg" alt="">
+        <div class="p-2">
+          <div class="flex flex-row justify-between">
+            <p class="text-xl self-center">Title</p>
+            <p class="bg-emerald-100 rounded-full p-2">Rp. Price</p>
+          </div>
+          <p class="text-base">Desc</p>
+        </div>
+      </div>
+      <!-- end of card -->
